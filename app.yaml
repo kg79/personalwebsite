@@ -14,3 +14,6 @@
 # [START gae_quickstart_yaml]
 runtime: nodejs10
 # [END gae_quickstart_yaml]
+
+env_variables:
+  MONGODB_URI: "mongodb://kevin:greenApples1@ds145113.mlab.com:45113/nouns"
