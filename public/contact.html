@@ -44,7 +44,26 @@
 				display:flex;
 				justify-content:center;
 				align-items:center;
-			}
+			} article {
+				background:aqua;
+/*				border:solid .1em black;*/
+				display:flex;
+				justify-content:space-evenly;
+				align-items:center;
+	
+			} #topFormSection {
+				height:10vw;
+				background:lime;
+				display:grid;
+				grid-template-columns:1fr 1fr;
+			} #blah {
+			/*	margin-top:3em;	*/	
+				flex-direction:column;
+			} #message {
+				margin:4%;
+			} input[type='submit'] {
+				margin:4%;
+			}	
 		</style>
 	</head>
 	<body>
@@ -62,11 +81,24 @@
 			consideration. 
 		</section>
 		<section id='bottomSection'>
-			<form>
-				&nbsp;
-			</form>
-			&nbsp;
+			<form method='POST' action='/sendMessage'>
+				<section id='topFormSection'>
+					<article><label>Name: </label><input name='name'></article>
+					<article><label>Title: </label><input name='title'></article>
+					<article><label>Email: </label><input name='email'></article>
+					<article><label>Organization: </label><input name='org'></article>
+				</section>
+				<section id='bottomFormSection'>
+					<article id='blah' >
+					<label id='message'>Message: </label>
+					<textarea name='message' rows='15' cols='55'></textarea>
+					<input type='submit'>
+					</article>
+				</section>
+			</form>	
 		</section>
 	
 	</body>
+	<script>
+	</script>
 </html>

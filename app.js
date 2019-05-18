@@ -1,8 +1,11 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const MongoClient = require('mongodb').MongoClient;
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: false }));
 
-
+// dont forget to set url constant
 
 app.set('views', path.join(__dirname, '/views'));
 
@@ -25,6 +28,21 @@ app.get('/bio', (req, res) => {
 app.get('/contact', (req, res) => {
 	res.sendFile(__dirname + '/public/contact.html');
 })
+
+app.post('/sendMessage', (req, res) => {
+    MongoClient.connect(url, { useNewUrlParser: true }, function(err, db) {
+        if (err) throw err;
+        var dbo = db.db("personalmessages");
+	        dbo.collection("mymessages").insertOne({
+			name:req.body.name,
+			title:req.body.title,
+			email:req.body.email,
+			org:req.body.org,
+			message:req.body.message
+            	});
+     		res.end('you did it fucko'); 
+    });
+});
 
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
