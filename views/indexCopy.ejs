@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+	  body, html {
+	          margin:0;
+		  background:#333;
+		  font-family:sans-serif;
+	} h1 {
+		  margin:0;
+		  background:#999;
+	          height:10vh;
+	          display:flex;
+	          justify-content:center;
+	          flex-direction:column;
+	          align-items:center;
+		  text-align:center;
+	  } nav {
+	  	background:grey;
+	  	display:flex;
+	        justify-content:space-evenly;
+	        flex-direction:column;
+	  	align-items:center;
+	  	flex-direction:row;
+		height:10vh;
+	  
+	  } .nav {
+		  background:aqua;
+		  padding:1%;
+		  border-radius:1em;
+		  margin:1%;
+	  } section {
+		height:75vh;
+		display:flex;	
+		flex-direction:column;
+		justify-content:space-around;
+		align-items:center;
+		position:absolute;
+	  } a[href='/getNews'] {
+		width:12em;
+		text-align:center;
+	  } article {
+		height:5vh;
+		background:#ccc;
+		display:flex;
+		justify-content:center;
+		align-items:center;
+		position:relative;
+	} div {
+		background:#aaa;
+		width:62vw;
+		text-align:center;
+	}
+       </style>
+    </head>
+    <body>
+
+	<% let randomNumber = Math.floor(Math.random() * stories.articles.length) %>
+
+	    <h1>Kevin Galvan's Personal Website</h1>
+        <nav>
+	  <a class='nav' href='/index'>home</a>
+	  <a class='nav' href='/resume'>resume</a>
+	  <a class='nav' href='/bio'>bio</a>
+	  <a class='nav' href='/contact'>contact</a>
+	</nav>
+	<article id='get'><a href='/getNews'>next news story</a></article>
+	<section>
+	<div>
+		<h2><%= stories.articles[randomNumber].title %></h2>
+	</div><!--
+	<div>	
+		<img src='<%= stories.articles[randomNumber].urlToImage %>' width='500'>
+	</div>-->
+	<div>
+		<%= stories.articles[randomNumber].description %>
+	</div>
+	<div>
+		<%= stories.articles[randomNumber].content %>
+	</div>
+	<div>
+		<a href='<%=stories.articles[randomNumber].url %>'>Read Full Article</a>
+	</div>
+
+	</section>
+    </body>
+    <script>
+    </script>
+</html>
+
+

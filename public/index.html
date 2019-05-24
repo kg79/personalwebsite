@@ -1,20 +1,21 @@
 <!doctype html>
 <html>
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
 	  body, html {
 	          margin:0;
 		  background:#333;
 		  font-family:sans-serif;
-		} h1 {
+	} h1 {
 		  margin:0;
 		  background:#999;
-	          height:3em;
+	          height:10vh;
 	          display:flex;
 	          justify-content:center;
 	          flex-direction:column;
 	          align-items:center;
+		  text-align:center;
 	  } nav {
 	  	background:grey;
 	  	display:flex;
@@ -22,14 +23,24 @@
 	        flex-direction:column;
 	  	align-items:center;
 	  	flex-direction:row;
+		height:10vh;
 	  
 	  } a {
-	  background:aqua;
-	  padding:1%;
-	  border-radius:1em;
-	  margin:1%;
+		  background:aqua;
+		  padding:1%;
+		  border-radius:1em;
+		  margin:1%;
+	  } section {
+		height:80vh;
+		display:flex;
+		flex-direction:row;
+		justify-content:center;
+		align-items:flex-start;
+	  } a[href='/getNews'] {
+		width:9em;
+		text-align:center;
 	  }
-        </style>
+       </style>
     </head>
     <body>
 	    <h1>Kevin Galvan's Personal Website</h1>
@@ -38,9 +49,10 @@
 	  <a href='/resume'>resume</a>
 	  <a href='/bio'>bio</a>
 	  <a href='/contact'>contact</a>
-	  
-	  
 	</nav>
+	<section>
+	<a href='/getNews'>get news</a>
+	</section>
     </body>
     <script>
     </script>
