@@ -7,15 +7,18 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/views'));
-// dont forget to set url constant for Mongo
-// or news api key
-const url = '';
-const newsApiKey = '';
+
+
+// const url = ''; // set url for mongo database
+// const newsApiKey = ''; // set key for newsapi.org
 app.set('views', path.join(__dirname, '/views'));
 
 app.use(express.static('public'))
 
-const PORT = process.env.PORT || 8084;
+const IP = 'localhost';
+
+
+const PORT = process.env.PORT || 8083;
 
 app.get('/resume', (req, res) => {
 	res.sendFile(__dirname + '/public/resume.html');
@@ -49,25 +52,24 @@ app.post('/sendMessage', (req, res) => {
 });
 
 app.get('/getNews', (req, res) => {
-https.get('newsApiKey',
-(resp) => {
-let data = '';
-  resp.on('data', (chunk) => {
-    data += chunk;
-  });
+	https.get(`${newsApiKey}`,
+	(resp) => {
+	let data = '';
+		resp.on('data', (chunk) => {
+			data += chunk;
+		});
 
- resp.on('end', () => {
-   let stories = JSON.parse(data);
-	res.render('index', {stories});
-  });
+	resp.on('end', () => {
+		let stories = JSON.parse(data);
+		res.render('index', {stories});
+		});
 
-}).on("error", (err) => {
-  console.log("Error: " + err.message);
+	}).on("error", (err) => {
+		console.log("Error: " + err.message);
+	});
+
 });
 
-});
-
-app.listen(PORT, '10.0.0.106', () => {
-  console.log(`App listening on port ${PORT}`);
-  console.log('Press Ctrl+C to quit.');
+app.listen(PORT, IP, () => {
+  console.log(`${IP}:${PORT}`);
 });

@@ -4,41 +4,43 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
 	  body, html {
-	          margin:0;
+	    margin:0;
 		  background:#333;
 		  font-family:sans-serif;
 	} h1 {
 		  margin:0;
 		  background:#999;
-	          height:10vh;
-	          display:flex;
-	          justify-content:center;
-	          flex-direction:column;
-	          align-items:center;
+	    height:16vh;
+	    display:flex;
+	    justify-content:center;
+	    flex-direction:column;
+	    align-items:center;
 		  text-align:center;
 	  } nav {
 	  	background:grey;
 	  	display:flex;
-	        justify-content:space-evenly;
-	        flex-direction:column;
+	    justify-content:space-evenly;
+	    flex-direction:column;
 	  	align-items:center;
 	  	flex-direction:row;
-		height:10vh;
+			height:10vh;
 	  
 	  } a {
-		  background:aqua;
-		  padding:1%;
-		  border-radius:1em;
-		  margin:1%;
+				background:aqua;
+				padding:1%;
+				border-radius:1em;
+				margin:1%;
+				text-align:center;
 	  } section {
-		height:80vh;
-		display:flex;
-		flex-direction:row;
-		justify-content:center;
-		align-items:flex-start;
+				height:80vh;
+				display:flex;
+				flex-direction:row;
+				justify-content:center;
+				align-items:flex-start;
 	  } a[href='/getNews'] {
-		width:9em;
-		text-align:center;
+				width:12em;
+				text-align:center;
+				margin-top:6vh;
 	  }
        </style>
     </head>
@@ -51,9 +53,16 @@
 	  <a href='/contact'>contact</a>
 	</nav>
 	<section>
-	<a href='/getNews'>get news</a>
+	<a href='/getNews'>Read a top news story</a>
 	</section>
     </body>
     <script>
+					let count = 0;
+					document.ontouchstart = () => {
+						count++;
+						if (count >= 2) {
+							location.reload();
+						}
+					}
     </script>
 </html>

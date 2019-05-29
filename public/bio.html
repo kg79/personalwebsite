@@ -1,87 +1,125 @@
 <!doctype html>
 <html>
 	<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<style>
 		body {
-		margin:0;
-		font-family:sans-serif;
+			margin:0;
+			font-family:sans-serif;
 		}
 		h1 {
-		font-family:sans-serif;	
-		margin:0;
-		background:#333;
-		color:#bbb;
-	       	height:10vh;
-		display:flex;
-		justify-content:center;
-		flex-direction:column;
-	        align-items:center;
-		margin-bottom:0;
+			font-family:sans-serif;	
+			margin:0;
+			background:#666;
+			color:#bbb;
+			height:10vh;
+			display:flex;
+			justify-content:center;
+			flex-direction:column;
+			align-items:center;
+			margin-bottom:0;
 		}
-	       	main {
-		height:80vh;
-		background:#333;
+	    main {
+			height:80vh;
+			background:#333;
+			display:flex;
+			flex-direction:column;
+			justify-content:space-around;
 		}
 		section   {
-		background:aqua;
-		height:25em;
-		display:flex;
-		flex-direction:column;
-		justify-content:space-around;
-		align-items:center;	
+			background:aqua;
+			height:25em;
+			display:flex;
+			flex-direction:column;
+			justify-content:space-around;
+			align-items:center;	
 		} article {
-		width:62vw;
-		background:#bbb;
+			width:100vw;
+			background:#bbb;
+			
 		} #myName {
-		text-align:center;
+			text-align:center;
+			width:100vw;
 		} article:not(#myName) {
-		text-indent:3em;
+			text-indent:3em;
 		} nav {
-		background:grey;
-		display:flex;
-		justify-content:space-evenly;
-		align-items:center;
-		flex-direction:row;
-		height:10vh;
+			background:grey;
+			display:flex;
+			justify-content:space-evenly;
+			align-items:center;
+			flex-direction:row;
+			height:10vh;
 		} a {
-		background:aqua;
-		padding:1%;
-		border-radius:1em;
-		margin:1%;
+			background:aqua;
+			padding:1%;
+			border-radius:1em;
+			margin:1%;
 		}
+		@media only screen and (min-width: 600px) {
+				article, #myName {
+					width:70vw;
+					margin:auto;
+				}
+			}
+			@media only screen and (max-height:600px) {
+				main {
+					height:auto;
+				}
+			}
 
 	</style>
 	</head>
 	<body>
-	  <h1>Bio</h1>
+		<h1>Bio</h1>
+		
 	  <nav>
 	  	  <a href='/index'>home</a>
 		  <a href='/resume'>resume</a>
 		  <a href='/bio'>bio</a>
 		  <a href='/contact'>contact</a>
-	</nav>
-
+	</nav> 
+	<main>
 	 
-	  <main>
-	 	 <section>
+
 			<article id='myName'>
 				Kevin Lawrence Galvan
 			</article>
 			<article>
-I was born in Austin, April 27, 1992, and was raised in League City Texas to an upper middle
-class family. I was a part of various organizations 
-as a child such as Boy Scouts, Swimming, and Water Polo. I've also studied and written music actively 
-for a number of years. During that time I also studied literature and art in an 
-attempt to learn more about creativity and the western canon in general.
+				I was raised in League City, Tx, and was part of various organizations such as Boy Scouts, swimming, and 
+				water polo clubs. I also studied music in lessons and on my own, writing music the majority of my youth.
 			</article>
+
 			<article>
-I started studying Web Development in August, 2016. It began with HTML, CSS, JavaScript, with some PHP/MYSQL, but I've studied at least the syntax of most of the modern languages in an attempt to better understand the nature of programming. I attended Galvanize Web Development Immersive program starting in February 2018, and learned more about vanilla JavaScript, Front End, Back End Development with Node, and the Linux environment. It was very interesting learning generic problem solving techniques, as well as the carnival of data structures used to execute JavaScript, in the form of the stack, the queue, and the heap. 
+				I spend my early adulthood working and going to college intermittenly, without finding the direction I was 
+				looking for. It wasn't until August 2016 that I started studying Web Development and my path became clear. My initial inspiration came from wanting to code customizable musical instruments, and found the browser to be the most viable option using the Web Audio API. I studied 
+				with a zeal and passion unparalleled by my peers because of the inspiration I had. I wrote mostly JavaScript,
+				but familiarized myself with prominent languages in order to better understand the nature of programming, 
+				and all the ideas and details are interesting to me.
 			</article>
+
 			<article>
-I'm very optimistic about the future, given that I've been preparing for almost three years to get my first real job in Web Development. My original backround was in music, and I woke up and wrote music every single day that I could, every moment that was available. I use that same zeal to achieve my goals in programming, and the two aren't unrelated. Problem solving takes creativity, philosophy, intellect, tenacity, and style, as well as the right combination of all the components.
-			</article>	
-	
-	</section>
-	  </main>
+				One of the most formative experiences in my study was when I attended Galvanize Web Development 
+				Immersive in Austin. There I learned to use Linux, SQL, problem solving techniques, backend development using Node, in addition to sharpening my vanilla JavaScript. I also became aware of the language under 
+				the hood, like how objects are stored in memory and that a stack and queue execute the event loop. It was one of my best experiences, but 
+				unfortunately I dropped out 60% of the way through due to personal reasons. I remain dedicated and passionate 
+				about Web Development and very optimistic about the future, in terms of how much farther I can go, and 
+				how I can serve a higher purpose as part of a larger organization. 
+			</article>
+	 
+
+		</main>
+		<div id='theWidth'>
+
+		</div>
 	</body>
+	<script>
+				let count = 0;
+					document.ontouchstart = () => {
+						count++;
+						if (count >= 2) {
+							location.reload();
+					}
+				}
+				const theWidth = document.getElementById('theWidth')
+	</script>
 </html>
