@@ -1,0 +1,151 @@
+<!doctype html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style>
+			html, body {
+				margin:0;
+				font-family:sans-serif;
+			}
+			main {
+				background:rgb(33, 176, 219);
+				height:75vh;
+				width:100vw;
+				display:flex;
+				flex-direction:column;
+				justify-content:space-evenly;
+				align-items:center;
+				margin:0;
+			}
+			#topMost {
+				background:lightgrey;
+				/* height:16vh; */
+				width:100vw;
+				margin:0;
+			}
+			h1 {
+				background:lightgrey;
+				height:8vh;
+				margin:0;
+				display:flex;
+				justify-content:center;
+				align-items:center;
+			}
+			nav {
+				background:gray;
+				height:8vh;
+				display:flex;
+				justify-content:space-around;
+				align-items:center;
+			}
+			#shpeal {
+				background:lightgrey;
+				height:4em;
+				display:flex;
+				flex-direction:column;
+				justify-content:center;
+				width:68vw;
+				border-radius:1em;
+				align-items:center;
+				padding:1%;
+			}
+			#formPart {
+				background:lightgray;
+				height:40vh;
+				border-radius:1em;
+			}
+			#topFormPart {
+				text-align:center;
+				padding:2%;
+				width:70vw;
+				/* background:aqua; */
+			}
+			#bottomFormPart {
+				display:flex;
+				justify-content:center;
+				flex-direction:column;
+				align-items:center;
+			}
+			label {
+				/* background:blue; */
+				float:left;
+			}
+			input {
+				/* float:right; */
+				width:10em;
+				position:relative;
+				right:3vw;
+			}
+			article {
+				/* background:lime; */
+				display:flex;
+				justify-content:space-between;
+			}
+			#message {
+
+			}
+			textarea {
+				width:90%;
+				margin:3%;
+				height:15vh;
+			}
+
+			@media only screen and (min-width: 600px) {
+				main {
+					height:84vh;
+				}
+			}
+			@media only screen and (min-height: 600px) {
+				#formPart {
+					height:50vh;
+				}
+			}
+			@media only screen and (min-height: 600px) {
+				.topArticlePart {
+					width:35vw;
+					/* background:pink; */
+					margin:auto;
+				}
+			}
+		</style>
+	</head>
+	<body>
+			<section id='topMost'>
+					<h1>Contact</h1>
+
+					<nav>
+							<a href='/index'>home</a>
+							<a href='/resume'>resume</a>
+							<a href='/bio'>bio</a>
+							<a href='/contact'>contact</a>
+					</nav>
+			</section>
+		<main>
+
+			<section id='shpeal'>
+				Any and all comments, questions, and opportunites will be appreciated and considered.
+			</section>
+
+			<section id='formPart'>
+				<form method='POST' action='/sendMessage'>
+					<section id='topFormPart'>
+						<article class='topArticlePart'><label>Name: </label><input name='name'></article>
+
+						<article class='topArticlePart'><label>Title: </label><input name='title'></article>
+
+						<article class='topArticlePart'><label>Email: </label><input name='email'></article>
+						
+						<article class='topArticlePart'><label>Organization: </label><input name='org'></article>
+					</section>
+					 <section id='bottomFormPart'>
+						<article id='message'>Message: </article>
+						<textarea></textarea>
+					</section>
+				</form>
+			</section>
+		</main>
+	</body>
+	<script>
+
+	</script>
+</html>

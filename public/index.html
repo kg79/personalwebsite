@@ -1,68 +1,195 @@
 <!doctype html>
 <html>
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <style>
-	  body, html {
-	    margin:0;
-		  background:#333;
-		  font-family:sans-serif;
-	} h1 {
-		  margin:0;
-		  background:#999;
-	    height:16vh;
-	    display:flex;
-	    justify-content:center;
-	    flex-direction:column;
-	    align-items:center;
-		  text-align:center;
-	  } nav {
-	  	background:grey;
-	  	display:flex;
-	    justify-content:space-evenly;
-	    flex-direction:column;
-	  	align-items:center;
-	  	flex-direction:row;
-			height:10vh;
-	  
-	  } a {
-				background:aqua;
-				padding:1%;
-				border-radius:1em;
-				margin:1%;
-				text-align:center;
-	  } section {
-				height:80vh;
-				display:flex;
-				flex-direction:row;
-				justify-content:center;
-				align-items:flex-start;
-	  } a[href='/getNews'] {
-				width:12em;
-				text-align:center;
-				margin-top:6vh;
-	  }
-       </style>
+        <link href="https://fonts.googleapis.com/css?family=Fascinate+Inline&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Raleway|Ubuntu&display=swap" rel="stylesheet">
+      <style>
+	
+    html, body {
+        margin:0;
+        overflow-y:hidden;
+    } #can {
+        margin:0;
+        z-index:-1;
+        position:fixed;
+        background:black;
+    }
+
+    header {
+        height:10vh;
+        font-family: 'Fascinate Inline', cursive;
+        display:flex;
+        flex-direction:column;
+    } #myName {
+        align-self:center;
+        position:fixed;
+        margin:1%;
+        font-size:300%;
+        color:rgb(216, 199, 41);
+        text-shadow:black -2px 2px;
+    }
+    
+    #hamburger {
+        width:fit-content;
+        background:white;
+        z-index:1;
+        line-height:.3em;
+        font-weight:bold;
+        font-size:270%;
+        padding:.5%;
+        padding-bottom:.3em;
+        margin:.9%;
+        border:solid .1em black;
+        float:right;
+        border-radius:.2em;
+        cursor:pointer;
+        align-self:flex-end;
+    }
+
+    main {
+        color:black;
+        height:88.3vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    } #card {
+        display:flex;
+        position:fixed;
+    } #greeting {
+        background:white;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+    } p {
+        width:20em;
+        text-indent:2em;
+    } #hello {
+        text-align:center;
+        text-indent:0em;
+    } #greeting > p {
+        font-family: 'Ubuntu', sans-serif;
+    }
+
+    #navigation {
+        background:hsl(210, 40%, 50%);
+        position:absolute;
+        top:23vh;
+        right:6vw;
+        height:61vh;
+        width:10vw;
+        visibility:hidden;
+        display:flex;
+        flex-direction:column;
+        justify-content:space-around;
+    } .navElements {
+        background:black;
+        color:white;
+        text-align:center;
+        font-family: 'Ubuntu', sans-serif;
+    }
+
+    a {
+        color:white;
+    }
+
+
+        </style>
     </head>
     <body>
-	    <h1>Kevin Galvan's Personal Website</h1>
-        <nav>
-	  <a href='/index'>home</a>
-	  <a href='/resume'>resume</a>
-	  <a href='/bio'>bio</a>
-	  <a href='/contact'>contact</a>
-	</nav>
-	<section>
-	<a href='/getNews'>Read a top news story</a>
-	</section>
+      <canvas id='can'></canvas>
+
+<header>
+        <div id='hamburger'>
+                &mdash;<br/>
+                &mdash;<br/>
+                &mdash;<br/>
+            </div>
+    <div id='myName'>Kevin Lawrence Galvan</div>
+
+</header>
+
+      <main>
+        <section id='card'>
+            <img src='croppedHeadshot.jpg'>
+            <article id='greeting'>
+                <p id='hello'>
+                    Hello!
+                </p>
+                <p>
+                    My name's Kevin, I'm 27, and from Houston, Texas.
+                </p>
+                <p>
+                    I'm a musician who became a Software Developer in August 2016, and haven't looked back.
+                </p>
+                <p>
+                    Most of my training is in JavaScript, with some PHP, Python, using Linux, with SQL or NOSQL.
+                </p>
+                <p>
+                    I bring a unique perspective and creative problem solving to the table, with a hard work ethic, 
+                    and great communication skills.
+                </p>
+
+            </article>
+        </section>
+        <section id='navigation'>
+            <article class='navElements'><a href='/home'>home</a></article>
+            <article class='navElements'><a href='/music'>music</a></article>
+            <article class='navElements'><a href='/projects'>projects</a></article>
+            <article class='navElements'><a href='/resume'>resume</a></article>
+            <article class='navElements'><a href='/contact'>contact</a></article>
+        </section>
+      </main>
+
     </body>
     <script>
-					let count = 0;
-					document.ontouchstart = () => {
-						count++;
-						if (count >= 2) {
-							location.reload();
-						}
-					}
+    const can = document.getElementById('can');
+const ctx = can.getContext('2d');
+
+can.width = window.innerWidth;
+can.height = window.innerHeight;
+
+ctx.strokeStyle = 'hsl(210, 40%, 50%)';
+ctx.lineWidth = '3';
+
+
+let r = window.innerWidth/24;
+let windowHeight = window.innerHeight;
+let windowWidth = window.innerWidth;
+
+let x = r/2, y = 0 - (r/2 * Math.sqrt(3)), count = 0;
+
+function across() {
+    while (y <= windowHeight + r) {
+        while (x < windowWidth + r) {
+            ctx.beginPath();
+            ctx.arc(x, y, r, 0, Math.PI*2);
+            ctx.stroke();
+            ctx.closePath();
+            x += r;
+        }
+    x = 0 - (r/2) * count;
+    y = (r/2 * Math.sqrt(3)) * count;
+    count++;
+    }
+}
+across()
+
+
+const hamburger = document.getElementById('hamburger');
+const navigation = document.getElementById('navigation');
+
+let clicked = false;
+
+hamburger.addEventListener('click', () => {
+    if (clicked === true) {
+        navigation.style.visibility = 'hidden'
+        clicked = false;
+    } else if (clicked === false) {
+        navigation.style.visibility = 'visible'
+        clicked = true;
+    }
+})
+
+
     </script>
 </html>

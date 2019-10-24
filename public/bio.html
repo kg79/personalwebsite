@@ -1,125 +1,177 @@
 <!doctype html>
 <html>
-	<head>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<style>
-		body {
-			margin:0;
-			font-family:sans-serif;
-		}
-		h1 {
-			font-family:sans-serif;	
-			margin:0;
-			background:#666;
-			color:#bbb;
-			height:10vh;
-			display:flex;
-			justify-content:center;
-			flex-direction:column;
-			align-items:center;
-			margin-bottom:0;
-		}
-	    main {
-			height:80vh;
-			background:#333;
-			display:flex;
-			flex-direction:column;
-			justify-content:space-around;
-		}
-		section   {
-			background:aqua;
-			height:25em;
-			display:flex;
-			flex-direction:column;
-			justify-content:space-around;
-			align-items:center;	
-		} article {
-			width:100vw;
-			background:#bbb;
-			
-		} #myName {
-			text-align:center;
-			width:100vw;
-		} article:not(#myName) {
-			text-indent:3em;
-		} nav {
-			background:grey;
-			display:flex;
-			justify-content:space-evenly;
-			align-items:center;
-			flex-direction:row;
-			height:10vh;
-		} a {
-			background:aqua;
-			padding:1%;
-			border-radius:1em;
-			margin:1%;
-		}
-		@media only screen and (min-width: 600px) {
-				article, #myName {
-					width:70vw;
-					margin:auto;
-				}
-			}
-			@media only screen and (max-height:600px) {
-				main {
-					height:auto;
-				}
-			}
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Fascinate+Inline&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+      <style>
+	
+    html, body {
+        margin:0;
+        overflow-y:hidden;
+    } #can {
+        margin:0;
+        z-index:-1;
+        position:fixed;
+        background:black;
+    }
 
-	</style>
-	</head>
-	<body>
-		<h1>Bio</h1>
-		
-	  <nav>
-	  	  <a href='/index'>home</a>
-		  <a href='/resume'>resume</a>
-		  <a href='/bio'>bio</a>
-		  <a href='/contact'>contact</a>
-	</nav> 
-	<main>
-	 
+    header {
+        height:10vh;
+        font-family: 'Fascinate Inline', cursive;
+        display:flex;
+        flex-direction:column;
+    } #myName {
+        align-self:center;
+        position:fixed;
+        margin:1%;
+        font-size:300%;
+        color:rgb(216, 199, 41);
+        text-shadow:black -2px 2px;
+    }
+    
+    #hamburger {
+        width:fit-content;
+        background:white;
+        z-index:1;
+        line-height:.3em;
+        font-weight:bold;
+        font-size:270%;
+        padding:.5%;
+        padding-bottom:.3em;
+        margin:.9%;
+        border:solid .1em black;
+        float:right;
+        border-radius:.2em;
+        cursor:pointer;
+        align-self:flex-end;
+    }
 
-			<article id='myName'>
-				Kevin Lawrence Galvan
-			</article>
-			<article>
-				I was raised in League City, Tx, and was part of various organizations such as Boy Scouts, swimming, and 
-				water polo clubs. I also studied music in lessons and on my own, writing music the majority of my youth.
-			</article>
+    main {
+        color:black;
+        height:88.3vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    } #bio {
+        display:flex;
+        flex-direction:column;
+        position:fixed;
+        background:white;
+        height:62vh;
+        width:62vw;
+        align-items:center;
+    } p {
+        text-indent:2em;
+        margin:1%;
+    }
 
-			<article>
-				I spend my early adulthood working and going to college intermittenly, without finding the direction I was 
-				looking for. It wasn't until August 2016 that I started studying Web Development and my path became clear. My initial inspiration came from wanting to code customizable musical instruments, and found the browser to be the most viable option using the Web Audio API. I studied 
-				with a zeal and passion unparalleled by my peers because of the inspiration I had. I wrote mostly JavaScript,
-				but familiarized myself with prominent languages in order to better understand the nature of programming, 
-				and all the ideas and details are interesting to me.
-			</article>
+    #navigation {
+        background:hsl(320, 40%, 50%);
+        position:absolute;
+        top:23vh;
+        right:6vw;
+        height:61vh;
+        width:10vw;
+        visibility:hidden;
+        display:flex;
+        flex-direction:column;
+        justify-content:space-around;
+    } .navElements {
+        background:black;
+        color:white;
+        text-align:center;
+        font-family: 'Raleway', sans-serif;
+    } a {
+        color:white;
+    }
 
-			<article>
-				One of the most formative experiences in my study was when I attended Galvanize Web Development 
-				Immersive in Austin. There I learned to use Linux, SQL, problem solving techniques, backend development using Node, in addition to sharpening my vanilla JavaScript. I also became aware of the language under 
-				the hood, like how objects are stored in memory and that a stack and queue execute the event loop. It was one of my best experiences, but 
-				unfortunately I dropped out 60% of the way through due to personal reasons. I remain dedicated and passionate 
-				about Web Development and very optimistic about the future, in terms of how much farther I can go, and 
-				how I can serve a higher purpose as part of a larger organization. 
-			</article>
-	 
 
-		</main>
-		<div id='theWidth'>
 
-		</div>
-	</body>
-	<script>
-				let count = 0;
-					document.ontouchstart = () => {
-						count++;
-						if (count >= 2) {
-							location.reload();
-					}
-				}
-				const theWidth = document.getElementById('theWidth')
-	</script>
+        </style>
+    </head>
+    <body>
+      <canvas id='can'></canvas>
+
+<header>
+        <div id='hamburger'>
+                &mdash;<br/>
+                &mdash;<br/>
+                &mdash;<br/>
+            </div>
+    <div id='myName'>Bio</div>
+
+</header>
+
+      <main>
+        <section id='bio'>
+
+            <p>
+               My name is Kevin, I'm 27, and from Houst
+            </p>
+
+
+
+        </section>
+
+        <section id='navigation'>
+            <article class='navElements'><a href='/home'>home</a></article>
+            <article class='navElements'><a href='/music'>music</a></article>
+            <article class='navElements'><a href='/projects'>projects</a></article>
+            <article class='navElements'><a href='/resume'>resume</a></article>
+            <article class='navElements'><a href='/contact'>contact</a></article>
+        </section>
+      </main>
+
+    </body>
+    <script>
+    const can = document.getElementById('can');
+const ctx = can.getContext('2d');
+
+can.width = window.innerWidth;
+can.height = window.innerHeight;
+
+ctx.strokeStyle = 'hsl(320, 40%, 50%)';
+ctx.lineWidth = '3';
+
+
+let r = window.innerWidth/24;
+let windowHeight = window.innerHeight;
+let windowWidth = window.innerWidth;
+
+let x = r/2, y = 0 - (r/2 * Math.sqrt(3)), count = 0;
+
+function across() {
+    while (y <= windowHeight + r) {
+        while (x < windowWidth + r) {
+            ctx.beginPath();
+            ctx.arc(x, y, r, 0, Math.PI*2);
+            ctx.stroke();
+            ctx.closePath();
+            x += r;
+        }
+    x = 0 - (r/2) * count;
+    y = (r/2 * Math.sqrt(3)) * count;
+    count++;
+    }
+}
+across()
+
+
+const hamburger = document.getElementById('hamburger');
+const navigation = document.getElementById('navigation');
+
+let clicked = false;
+
+hamburger.addEventListener('click', () => {
+    if (clicked === true) {
+        navigation.style.visibility = 'hidden'
+        clicked = false;
+    } else if (clicked === false) {
+        navigation.style.visibility = 'visible'
+        clicked = true;
+    }
+})
+
+
+    </script>
 </html>

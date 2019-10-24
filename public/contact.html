@@ -1,157 +1,206 @@
 <!doctype html>
 <html>
-	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<style>
-			html, body {
-				margin:0;
-				font-family:sans-serif;
-			}
-			main {
-				background:rgb(33, 176, 219);
-				height:75vh;
-				width:100vw;
-				display:flex;
-				flex-direction:column;
-				justify-content:space-evenly;
-				align-items:center;
-				margin:0;
-			}
-			#topMost {
-				background:lightgrey;
-				/* height:16vh; */
-				width:100vw;
-				margin:0;
-			}
-			h1 {
-				background:lightgrey;
-				height:8vh;
-				margin:0;
-				display:flex;
-				justify-content:center;
-				align-items:center;
-			}
-			nav {
-				background:gray;
-				height:8vh;
-				display:flex;
-				justify-content:space-around;
-				align-items:center;
-			}
-			#shpeal {
-				background:lightgrey;
-				height:4em;
-				display:flex;
-				flex-direction:column;
-				justify-content:center;
-				width:68vw;
-				border-radius:1em;
-				align-items:center;
-				padding:1%;
-			}
-			#formPart {
-				background:lightgray;
-				height:40vh;
-				border-radius:1em;
-			}
-			#topFormPart {
-				text-align:center;
-				padding:2%;
-				width:70vw;
-				/* background:aqua; */
-			}
-			#bottomFormPart {
-				display:flex;
-				justify-content:center;
-				flex-direction:column;
-				align-items:center;
-			}
-			label {
-				/* background:blue; */
-				float:left;
-			}
-			input {
-				/* float:right; */
-				width:10em;
-				position:relative;
-				right:3vw;
-			}
-			article {
-				/* background:lime; */
-				display:flex;
-				justify-content:space-between;
-			}
-			#message {
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Fascinate+Inline&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+      <style>
+	
+    html, body {
+        margin:0;
+        overflow-y:hidden;
+    } #can {
+        margin:0;
+        z-index:-1;
+        position:fixed;
+        background:black;
+    }
 
-			}
-			textarea {
-				width:90%;
-				margin:3%;
-				height:15vh;
-			}
+    header {
+        height:10vh;
+        font-family: 'Fascinate Inline', cursive;
+        display:flex;
+        flex-direction:column;
+    } #myName {
+        align-self:center;
+        position:fixed;
+        margin:1%;
+        font-size:300%;
+        color:rgb(216, 199, 41);
+        text-shadow:black -2px 2px;
+    }
+    
+    #hamburger {
+        width:fit-content;
+        background:white;
+        z-index:1;
+        line-height:.3em;
+        font-weight:bold;
+        font-size:270%;
+        padding:.5%;
+        padding-bottom:.3em;
+        margin:.9%;
+        border:solid .1em black;
+        float:right;
+        border-radius:.2em;
+        cursor:pointer;
+        align-self:flex-end;
+    }
 
-			@media only screen and (min-width: 600px) {
-				main {
-					height:84vh;
-				}
-			}
-			@media only screen and (min-height: 600px) {
-				#formPart {
-					height:50vh;
-				}
-			}
-			@media only screen and (min-height: 600px) {
-				.topArticlePart {
-					width:35vw;
-					/* background:pink; */
-					margin:auto;
-				}
-			}
-		</style>
-	</head>
-	<body>
-			<section id='topMost'>
-					<h1>Contact</h1>
+    main {
+        color:black;
+        height:88.3vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    } #contact {
+        display:flex;
+        flex-direction:column;
+        justify-content: space-around;
+        position:fixed;
+        background:black;
+        height:62vh;
+        width:62vw;
+        align-items:center;
+    } .inputArea {
+        background:white;
+        text-align:center;
+        padding:1%;
+    } input, textarea {
+        background:black;
+        color:hsl(320, 40%, 50%);
+        font-weight:bold;
+    }
 
-					<nav>
-							<a href='/index'>home</a>
-							<a href='/resume'>resume</a>
-							<a href='/bio'>bio</a>
-							<a href='/contact'>contact</a>
-					</nav>
-			</section>
-		<main>
+    #navigation {
+        background:hsl(320, 40%, 50%);
+        position:absolute;
+        top:23vh;
+        right:6vw;
+        height:61vh;
+        width:10vw;
+        visibility:hidden;
+        display:flex;
+        flex-direction:column;
+        justify-content:space-around;
+    } .navElements {
+        background:black;
+        color:white;
+        text-align:center;
+        font-family: 'Raleway', sans-serif;
+    } a {
+        color:white;
+    }
 
-			<section id='shpeal'>
-				Any and all comments, questions, and opportunites will be appreciated and considered.
-			</section>
 
-			<section id='formPart'>
-				<form method='POST' action='/sendMessage'>
-					<section id='topFormPart'>
-						<article class='topArticlePart'><label>Name: </label><input name='name'></article>
 
-						<article class='topArticlePart'><label>Title: </label><input name='title'></article>
+        </style>
+    </head>
+    <body>
+      <canvas id='can'></canvas>
 
-						<article class='topArticlePart'><label>Email: </label><input name='email'></article>
+<header>
+        <div id='hamburger'>
+                &mdash;<br/>
+                &mdash;<br/>
+                &mdash;<br/>
+            </div>
+    <div id='myName'>Contact</div>
+
+</header>
+
+      <main>
+
+
+                <form method='POST' action='/sendMessage' id='contact'>
+                        <article class='inputArea' style='background:black;color:white;'>
+                            Any comments or questions will be appreciated.
+                        </article>
+
+                        <article class='inputArea'><label>Name: </label>
+                            <input name='name'>
+                        </article>
+
+                        <article class='inputArea'><label>Title: </label>
+                            <input name='title'>
+                        </article>
+
+                        <article class='inputArea'><label>Email: </label>
+                            <input name='email'>
+                        </article>
 						
-						<article class='topArticlePart'><label>Organization: </label><input name='org'></article>
-					</section>
-					 <section id='bottomFormPart'>
-						<article id='message'>Message: </article>
-						<textarea></textarea>
-					</section>
+                        <article class='inputArea'><label>Organization: </label>
+                            <input name='org'>
+                        </article>
+                        
+						<article class='inputArea'><label>Message: </label><br/>
+						    <textarea cols='50' rows='10' name='message'></textarea>
+                        </article>
+
+                        <article class='inputArea'>
+						    <input type='submit'>
+                        </article>
 				</form>
-			</section>
-		</main>
-	</body>
-	<script>
-		let count = 0;
-		document.ontouchstart = () => {
-			count++;
-			if (count >= 2) {
-				location.reload();
-			}
-		}
-	</script>
+
+
+        <section id='navigation'>
+            <article class='navElements'><a href='/home'>home</a></article>
+            <article class='navElements'><a href='/music'>music</a></article>
+            <article class='navElements'><a href='/projects'>projects</a></article>
+            <article class='navElements'><a href='/resume'>resume</a></article>
+            <article class='navElements'><a href='/contact'>contact</a></article>
+        </section>
+      </main>
+
+    </body>
+    <script>
+    const can = document.getElementById('can');
+const ctx = can.getContext('2d');
+
+can.width = window.innerWidth;
+can.height = window.innerHeight;
+
+ctx.strokeStyle = 'hsl(320, 40%, 50%)';
+ctx.lineWidth = '3';
+
+
+let r = window.innerWidth/24;
+let windowHeight = window.innerHeight;
+let windowWidth = window.innerWidth;
+
+let x = r/2, y = 0 - (r/2 * Math.sqrt(3)), count = 0;
+
+function across() {
+    while (y <= windowHeight + r) {
+        while (x < windowWidth + r) {
+            ctx.beginPath();
+            ctx.arc(x, y, r, 0, Math.PI*2);
+            ctx.stroke();
+            ctx.closePath();
+            x += r;
+        }
+    x = 0 - (r/2) * count;
+    y = (r/2 * Math.sqrt(3)) * count;
+    count++;
+    }
+}
+across()
+
+
+const hamburger = document.getElementById('hamburger');
+const navigation = document.getElementById('navigation');
+
+let clicked = false;
+
+hamburger.addEventListener('click', () => {
+    if (clicked === true) {
+        navigation.style.visibility = 'hidden'
+        clicked = false;
+    } else if (clicked === false) {
+        navigation.style.visibility = 'visible'
+        clicked = true;
+    }
+})
+
+
+    </script>
 </html>
